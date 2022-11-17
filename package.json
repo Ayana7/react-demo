@@ -13,6 +13,8 @@
     "antd": "^4.15.2",
     "axios": "0.21.1",
     "copy-to-clipboard": "^3.3.2",
+    "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
     "pubsub-js": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-preset-mobx": "^2.0.0"
   }
 }

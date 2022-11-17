@@ -1,4 +1,6 @@
 import { Button, Input,Tooltip, message } from 'antd';
+import { observable, computed , makeObservable} from "mobx";
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 import AddModel from './AddModel'
 import StopClick from './StopClick'
@@ -11,10 +13,10 @@ interface DataType {
   age: number;
   address: string;
 }
+@inject('AppStore')
+@observer
 class About extends React.Component<any, any> {
   AddModelRef = React.createRef<any>()
-  
-  
    columns: ColumnsType<DataType> = [
     {
       title: 'Name',
@@ -105,7 +107,7 @@ class About extends React.Component<any, any> {
   ];
   constructor(props: any) {
     super(props)
-
+    makeObservable(this)
     this.state = {
       modalOpenVisible: false,
       msg: 'msg',
@@ -117,6 +119,24 @@ class About extends React.Component<any, any> {
         totalElements: 100
       },
     }
+  }
+  @computed get title() {
+    return this.props.AppStore.title;
+  }
+  @observable value = 2
+  @observable amount = 3
+  
+  @computed get total(){
+      return this.value * this.amount
+  }
+  // setter一定要定义在getter后，一些typescript版本会认为声明了两个名称相同的属性而报错
+  set total(val){
+      this.value = val
+  }
+  changeStore = () => {
+    this.props.AppStore.setGlobalTitle('新标题')
+    console.log(this.title)
+    this.total = 5
   }
   componentDidMount(): void {
     console.log(this.props)
@@ -151,6 +171,7 @@ class About extends React.Component<any, any> {
     const { msg, isModalOpen } = this.state
     return (
       <div className='pages'>
+        <h1>{this.title}{this.total}<Button type='primary' onClick={this.changeStore}>修改标题</Button></h1>
         <h5>1、父子组件传参</h5>
         <Button type='primary' onClick={this.handleAdd}>新增</Button>
         <AddModel ref={this.AddModelRef} msg={msg} modalOpenVisible={isModalOpen} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
