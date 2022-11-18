@@ -7,15 +7,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import About from './components/About';
 import MembersPage from './components/MembersPage';
+import PageResize from './components/PageResize';
+
 function App() {
   return (
     <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ClassComponentDemo />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/members" element={<MembersPage />} />
-          </Routes>
-        </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ClassComponentDemo />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/members" element={<MembersPage />} />
+        <Route path="/PageResize" element={<PageResize />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 

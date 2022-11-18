@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.189",
     "babel-preset-mobx": "^2.0.0"
   }
 }

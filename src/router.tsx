@@ -4,7 +4,7 @@ import App  from './App';
 
 import About from './components/About';
 import MembersPage from './components/MembersPage';
-
+import PageResize from './components/PageResize';
 
 
 class AppRouter extends React.Component<any , any>{
@@ -17,6 +17,8 @@ class AppRouter extends React.Component<any , any>{
             <Route path="/" element={<About />} />
             <Route path="/about" element={<About />} />
             <Route path="/members" element={<MembersPage />} />
+            <Route path="/PageResize" element={<PageResize />} />
+
 
           </Routes>
         </BrowserRouter>

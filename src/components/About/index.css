@@ -1,0 +1,26 @@
+.pages {
+  display: flex;
+  flex-direction: row;
+}
+
+.line-left {
+  height: 100vh;
+  position: relative;
+}
+
+/* // 拖拽线 */
+.drag-line {
+  width: 4px;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+
+}
+
+.drag-line:hover {
+  background-color: var(--mystery-mono-a300);
+}
